@@ -1,0 +1,89 @@
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>type Archivo1.txt
+Inserto una l├¡nea en el archivo
+Cambio en la rama master
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git branch
+  intento
+* master
+  pruebas
+  ramanuevaV2
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git checkout pruebas
+Switched to branch 'pruebas'
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>type Archivo1.txt
+Inserto una l├¡nea en el archivo
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git checkout master
+Switched to branch 'master'
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git merge pruebas
+Auto-merging Archivo1.txt
+CONFLICT (content): Merge conflict in Archivo1.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   Archivo1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+#ABORTAR FUSION
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git merge --abort
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git status
+On branch master
+nothing to commit, working tree clean
+
+#RESOLVER PROBLEMA DE FORMA MANUAL
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git merge pruebas
+Auto-merging Archivo1.txt
+CONFLICT (content): Merge conflict in Archivo1.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>type Archivo1.txt
+<<<<<<< HEAD
+Inserto una l├¡nea en el archivo
+Cambio en la rama master
+=======
+Inserto una l├¡nea en el archivo
+>>>>>>> pruebas
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git add .
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git status
+On branch master
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   Archivo1.txt
+
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git commit -m "Resuelvo el conflico ded fusion"
+[master 1c2ce67] Resuelvo el conflico ded fusion
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git status
+On branch master
+nothing to commit, working tree clean
+
+
+C:\Users\Bryan Jácome Tumbaco\Desktop\Nueva carpeta\proyectorama>git log --oneline --graph --all --decorate -6
+*   1c2ce67 (HEAD -> master) Resuelvo el conflico ded fusion
+|\
+| * ca46e6d (pruebas) Introduzco una linea en el Archivo1
+* |   d584e05 Merge branch 'intento' into master
+|\ \
+| * | 96ee459 (intento) Cambio en la rama intento
+* | | dadae86 Cambio en la rama master
+|/ /
+| | * e19d4d6 (ramanuevaV2) A<C3><B1>adi una segunda linea
+| |/
+|/|
+
